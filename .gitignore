@@ -1,0 +1,5 @@
+.evn
+__pycache__
+react-flask-app
+static/__pycache__
+Model
