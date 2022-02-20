@@ -1,5 +1,6 @@
 # Imports necessary libraries
-from crypt import methods
+# from crypt import methods
+# from urllib import response
 from flask import Flask
 from flask import jsonify, request
 from static.bertModel import PersianMaskedModel
@@ -12,20 +13,26 @@ app = Flask(__name__)
 @app.route('/', methods=['POST'])
 def home():
     request_data = request.get_json()
-
+    # print(request_data)
     sentence = None
     words = []
     if(request_data):
         if('sentence' in request_data):
-            sentence = request_data['request_data']
+            sentence = request_data['sentence']
         if('words' in request_data):
             words = request_data['words']
+        _response = {'sentence': sentence,
+                     'words': words}
+        return jsonify(_response)
 
-        return '''
-            <h1> The sentence value is: {}</h1>
-            <h1> The words values are: {}</h1>'''.format(sentence, words)
+    return '''
+        <h1 style='color:red'>403 User unathorized to access this page</h1>
+    '''
     # response = {'status': 200, 'response': {'1': 10, '2': 20, '3': 24}}
 
+
+@app.route('/', methods=['GET'])
+def main():
     return '''
         <form method="POST">
         <div><label>Sentence: <input type="text" name="sentence"></label></div>
@@ -33,11 +40,6 @@ def home():
         <input type="submit" value="Submit">
         </form>
     '''
-
-
-@app.route('/', methods=['GET'])
-def main():
-    pass
 
 
 # If the file is run directly,start the app.
