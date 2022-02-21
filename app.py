@@ -21,12 +21,17 @@ def home():
             sentence = request_data['sentence']
         if('words' in request_data):
             words = request_data['words']
+
+        result = maskedModel.calculate_probability(sentence, words)
+
         _response = {'sentence': sentence,
-                     'words': words}
+                     'words': words,
+                     'modelRespawns': result}
+
         return jsonify(_response)
 
     return '''
-        <h1 style='color:red'>403 User unathorized to access this page</h1>
+        <h1 style='color:red'>403 Access Forbiden, There is no way immma let you pass through!</h1>
     '''
     # response = {'status': 200, 'response': {'1': 10, '2': 20, '3': 24}}
 

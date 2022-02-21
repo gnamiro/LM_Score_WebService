@@ -117,15 +117,15 @@ class PersianMaskedModel:
 
     def calculate_probability(self, sentenceMask: str, targets: list):
         mask_index = sentenceMask.split().index(self.tokenizer.mask_token)
-        suggestion_words = convert_suggestions_to_list(targets)
+        # suggestion_words = convert_suggestions_to_list(targets)
         # print(suggestion_words)
 
         results_log = []
 
-        for target_word in tqdm(suggestion_words, desc=f"bert_unmasker Processing [{sentenceMask}]:"):
+        for target_word in tqdm(targets, desc=f"bert_unmasker Processing [{sentenceMask}]:"):
             sentence = sentenceMask.replace(
                 self.tokenizer.mask_token, 'یکانان')
-            tmp = sentence.split()
+            # tmp = sentence.split()
             res = self.get_word_in_sentence_probability(
                 sentence, target_word, bert_tokenizer=self.tokenizer, bert_model=self.bertMaskedLM, word_index=mask_index)
             results_log.append(
