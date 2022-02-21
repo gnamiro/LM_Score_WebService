@@ -12,27 +12,31 @@ app = Flask(__name__)
 
 @app.route('/', methods=['POST'])
 def home():
-    request_data = request.get_json()
-    # print(request_data)
-    sentence = None
-    words = []
-    if(request_data):
-        if('sentence' in request_data):
-            sentence = request_data['sentence']
-        if('words' in request_data):
-            words = request_data['words']
+    try:
+        request_data = request.get_json()
+        # print(request_data)
+        sentence = None
+        words = []
+        if(request_data):
+            if('sentence' in request_data):
+                sentence = request_data['sentence']
+            if('words' in request_data):
+                words = request_data['words']
 
-        result = maskedModel.calculate_probability(sentence, words)
+            assert type(words) == list
+            assert type(sentence) == str
 
-        _response = {'sentence': sentence,
-                     'words': words,
-                     'modelRespawns': result}
+            result = maskedModel.calculate_probability(sentence, words)
 
-        return jsonify(_response)
+            _response = {'sentence': sentence,
+                         'words': words,
+                         'modelRespawns': result}
 
-    return '''
-        <h1 style='color:red'>403 Access Forbiden, There is no way immma let you pass through!</h1>
-    '''
+            return jsonify(_response)
+    except AssertionError:
+        return '''
+            <h1 style='color:red'>500 SERVER ERROR, pls check your input format, it has to be list for words and string for sentence</h1>
+        '''
     # response = {'status': 200, 'response': {'1': 10, '2': 20, '3': 24}}
 
 
