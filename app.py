@@ -3,18 +3,22 @@
 # from urllib import response
 from flask import Flask
 from flask import jsonify, request
+from flask_cors import CORS
 from static.bertModel import PersianMaskedModel
 # Define the app
 app = Flask(__name__)
-
+app.config['CORS_HEADERS'] = 'Content-Type'
 # Get a welcoming message once you start the server.
+
+cors = CORS(app, resources={r"/": {"origins": "http://localhost:5500"}})
 
 
 @app.route('/', methods=['POST'])
+# @cross_origin(origin='localhost', headers=['Content- Type'])
 def home():
     try:
         request_data = request.get_json()
-        # print(request_data)
+        print(request_data)
         sentence = None
         words = []
         if(request_data):

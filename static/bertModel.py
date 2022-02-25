@@ -42,21 +42,21 @@ class PersianMaskedModel:
     ) -> Tuple[Tuple[str, float], ...]:
         whole_tokens = word_tokenize(sentence)
         # whole_tokens = tokenizer.tokenize(sentence)
-        print(whole_tokens)
+        # print(whole_tokens)
         if word_index == -1:
             word_index = whole_tokens.index(word)
         bert_token_map = {
             idx: bert_tokenizer.encode(whole_token, add_special_tokens=False)
             for idx, whole_token in enumerate(whole_tokens)
         }  # type: Dict[int,List[int]]
-        print(bert_token_map)
+        # print(bert_token_map)
         mask_token_id = bert_tokenizer.encode(
             "[MASK]", add_special_tokens=False)
         tokens_to_predict = bert_tokenizer.encode(
             word, add_special_tokens=False)
         bert_token_map[word_index] = mask_token_id * \
             len(tokens_to_predict)  # type: ignore
-        print(bert_token_map)
+        # print(bert_token_map)
         # LOG.debug(
         #     "total bert tokens: %s whole tokens: %s",
         #     len(list(chain.from_iterable(bert_token_map.values()))),
