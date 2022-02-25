@@ -3,18 +3,18 @@
 # from urllib import response
 from flask import Flask
 from flask import jsonify, request
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 from static.bertModel import PersianMaskedModel
 # Define the app
 app = Flask(__name__)
 app.config['CORS_HEADERS'] = 'Content-Type'
 # Get a welcoming message once you start the server.
 
-cors = CORS(app, resources={r"/": {"origins": "http://localhost:5500"}})
+CORS(app, resources={r"/": {"origins": "localhost:5500/service.html"}})
 
 
 @app.route('/', methods=['POST'])
-# @cross_origin(origin='localhost', headers=['Content- Type'])
+@cross_origin(origin='localhost', headers=['Content-Type'])
 def home():
     try:
         request_data = request.get_json()
@@ -34,7 +34,7 @@ def home():
 
             _response = {'sentence': sentence,
                          'words': words,
-                         'modelRespawns': result}
+                         'modelResponse': result}
 
             return jsonify(_response)
     except AssertionError:
