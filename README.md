@@ -4,6 +4,8 @@ Designing web service for Persian language grammar scoring model with flask
 
 ## A piece of advice for running this program:
 
+### Remember, for using the pars-bert model, you need to clone the model from [https://huggingface.co/HooshvareLab/bert-base-parsbert-uncased](hugging face) website to your working directory. To speed up server performance, it is better to clone it first rather than downloading the model with the help of the transformers library.
+
 first create a virtual environment with:
 
 > python -m venv .env
