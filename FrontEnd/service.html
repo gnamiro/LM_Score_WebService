@@ -1,0 +1,79 @@
+<!doctype html>
+<html dir="rtl" lang="fa-IR">
+
+<head>
+    <!-- Required meta tags -->
+   <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.5.3/css/bootstrap.min.css" integrity="sha384-JvExCACAZcHNJEc7156QaHXTnQL3hQBixvj5RV5buE7vgnNEzzskDtx9NQ4p6BJe" crossorigin="anonymous">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="static/fonts/vazir-fonts/fonts.css">
+    <link rel="stylesheet" href="static/fontawesome-free-6.0.0-web/css/all.min.css">
+    <link rel="stylesheet" href="static/css/styles.css"> 
+    <link rel="stylesheet" href="static/css/service.css"> 
+    <title>بررسی درستی جملات به کمک NLM فارسی</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <form method="post">
+            <div class="form-group textarea-form">
+                <textarea class="form-control textarea" id="sentence" placeholder="من به [MASK] می‌روم." rows="3"></textarea>
+                <label class="__label textarea-label" for="sentence">جمله مورد نظر با در نظر گرفتن توکن [MASK] بنویسید.</label>
+            </div>
+            <div class="words" id="words">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="word1" name="word1" placeholder="کلمه اول">
+                    <label class="__label" for="word1">کلمه اول</label>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="word2" name="word2" placeholder="کلمه دوم">
+                    <label class="__label" for="word2">کلمه دوم</label>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="word3" name="word3" placeholder="کلمه سوم">
+                    <label class="__label" for="word3">کلمه سوم</label>
+                </div>
+            </div>
+            <div class="buttons">
+                <button type="submit">تایید</button>
+                <button id="wordAugment"><i class="fa-solid fa-circle-plus fa-beat"></i></button>
+                <div id="error_messages"></div>
+            </div>
+        </form>    
+        <div class="results" id="results">
+        </div>
+    </div>
+
+    <ul class="nav"> 
+        <li><a href="home.html">خانه</a></li>
+        <li><a href="index.html">درباره</a></li>
+        <li><a href="#" class="active">سرویس</a></li>
+    </ul>
+    <ul class="foot">
+        <li><a href="#">Github</a></li>
+        <li><a href="#">Gmail</a></li>
+        <li><a href="#">Kaggle</a></li>
+    </ul>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="static/js/script.js">
+        
+    </script>
+    <script src="node_modules/jquery/src/jquery.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    
+</body>
+
+</html>

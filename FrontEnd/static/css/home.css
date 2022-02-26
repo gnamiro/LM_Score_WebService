@@ -1,0 +1,127 @@
+body{
+    background-image: url('../../images/home_img.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+.content{
+    margin-top: 9vh;
+    margin-right: 45vw;
+    max-width: 300px;
+}
+
+.content h1, h2{
+    animation: fade-in 0.5s ease-in forwards;
+    animation-delay: 2s;
+    opacity: 0;
+}
+
+.content  ul{
+    margin-top: 20px;
+    animation: fade-in 0.5s ease-in forwards;
+    animation-delay: 2.5s;
+    opacity: 0;
+}
+
+.start-button{
+    margin-top: 19vh;
+    margin-right: 49vw;
+    animation: fade-in 0.5s ease-in forwards;
+    animation-delay: 3s;
+    opacity: 0;
+}
+
+.imgBx {
+    position: absolute;
+    top: 16vh;
+    left: 13.5vw;
+    border-radius: 40px;
+}
+
+.imgBx img {
+    max-width: 250px;
+    border-radius: 28px;
+    animation: fade-in 0.5s ease-in forwards;
+    animation-delay: 2s;
+    opacity: 0;
+}
+
+.rotate{
+    transform: rotate(-32.5deg);
+}
+/* From cssbuttons.io by @westitan */
+button {
+    position: relative;
+    padding: 13px 16px;
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    border-radius: 40px;
+    border: none;
+    box-shadow: -1px 3px 2px grey;
+}
+
+button:active{
+    transform: translate(-1px, 3px);
+    box-shadow: 0;
+}
+
+button span {
+    position: relative;
+    color: #fff;
+    font-family: Arial;
+    letter-spacing: 3px;
+    z-index: 1;
+}
+
+button .liquid {
+    position: absolute;
+    top: -80px;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: #f02760;
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, .5);
+    transition: .5s;
+}
+
+button .liquid::after,
+button .liquid::before {
+    content: '';
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -75%);
+    background: #fff;
+}
+
+button .liquid::before {
+    border-radius: 45%;
+    background: rgba(20, 20, 20, 1);
+    animation: animate 5s linear infinite;
+}
+
+button .liquid::after {
+    border-radius: 40%;
+    background: rgba(20, 20, 20, .5);
+    animation: animate 10s linear infinite;
+}
+
+button:hover .liquid {
+    top: -120px;
+}
+
+@keyframes animate {
+    0% {
+        transform: translate(-50%, -75%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -75%) rotate(360deg);
+    }
+}
