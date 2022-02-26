@@ -9,11 +9,12 @@ first create a virtual environment with:
 > python -m venv .env
 
 Then activate venv with:
-. for windows use:
+
+-for windows use:
 
 > source .env/Scripts/activate
 
-. for linux:
+-for linux:
 
 > source .env/bin/activate
 
