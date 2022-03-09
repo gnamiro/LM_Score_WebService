@@ -7,6 +7,7 @@ from flask_cors import CORS, cross_origin
 from static.bertModel import PersianMaskedModel
 # Define the app
 app = Flask(__name__)
+maskedModel = PersianMaskedModel()
 app.config['CORS_HEADERS'] = 'Content-Type'
 # Get a welcoming message once you start the server.
 
@@ -16,9 +17,10 @@ CORS(app, resources={r"/": {"origins": "localhost:5500/service.html"}})
 @app.route('/', methods=['POST'])
 @cross_origin(origin='localhost', headers=['Content-Type'])
 def home():
+    global maskedModel
     try:
         request_data = request.get_json()
-        print(request_data)
+        # print(request_data)
         sentence = None
         words = []
         if(request_data):
@@ -57,6 +59,5 @@ def main():
 
 # If the file is run directly,start the app.
 if __name__ == '__main__':
-    maskedModel = PersianMaskedModel()
 
-    app.run(debug=True)
+    app.run()

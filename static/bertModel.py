@@ -9,7 +9,7 @@ from nltk import word_tokenize
 from typing import Tuple, List, Dict
 from copy import deepcopy
 import math
-from tqdm import tqdm
+# from tqdm import tqdm
 
 
 nltk.download('punkt')
@@ -116,13 +116,14 @@ class PersianMaskedModel:
             return math.log(results[0]*boost_factor)
 
     def calculate_probability(self, sentenceMask: str, targets: list):
+        # TODO: it can't find mask if it gets appended to other symbols such as dot --> fix this
         mask_index = sentenceMask.split().index(self.tokenizer.mask_token)
         # suggestion_words = convert_suggestions_to_list(targets)
         # print(suggestion_words)
 
         results_log = []
 
-        for target_word in tqdm(targets, desc=f"bert_unmasker Processing [{sentenceMask}]:"):
+        for target_word in targets:
             sentence = sentenceMask.replace(
                 self.tokenizer.mask_token, 'یکانان')
             # tmp = sentence.split()
